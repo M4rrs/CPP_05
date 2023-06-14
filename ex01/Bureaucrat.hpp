@@ -15,14 +15,16 @@ class Bureaucrat {
 		Bureaucrat( std::string name, int grade );
 		Bureaucrat( const Bureaucrat &copy);
 		Bureaucrat &operator=( const Bureaucrat &assign );
-		~Bureaucrat();
+		~Bureaucrat( void );
 
-		std::string getName() const;
-		int	getGrade() const;
+		std::string getName( void ) const;
+		int	getGrade( void ) const;
 		void setGrade( int grade );
 
 		void promote( int promotion );
 		void demote( int demotion );
+
+		void signForm( Form f );
 
 		class GradeTooHighException : public std::exception {
 			public:
