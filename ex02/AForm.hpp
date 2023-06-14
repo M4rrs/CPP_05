@@ -1,13 +1,13 @@
 #pragma once
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AForm_HPP
+#define AForm_HPP
 
 #include "Bureaucrat.hpp"
 #include <stdbool.h>
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	private:
 		const std::string	_name;
 		bool _signed;
@@ -15,12 +15,13 @@ class Form {
 		const int _execGrade;
 
 	public:
-		Form( void );
-		Form( int sign, int exec );
-		Form( std::string name, int sign, int exec );
-		Form( const Form &copy);
-		Form &operator=( const Form &assign );
-		~Form( void );
+		virtual void contract() = 0;
+		AForm( void );
+		AForm( int sign, int exec );
+		AForm( std::string name, int sign, int exec );
+		AForm( const AForm &copy);
+		AForm &operator=( const AForm &assign );
+		~AForm( void );
 
 		void setSign( int sign );
 		void setExec( int exec );
@@ -43,12 +44,12 @@ class Form {
 				virtual const char* what() const throw();
 		};
 
-		class FormSigned : public std::exception {
+		class AFormSigned : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
 };
 
-std::ostream &operator<<( std::ostream &out, Form *insert );
+std::ostream &operator<<( std::ostream &out, AForm *insert );
 
 #endif
