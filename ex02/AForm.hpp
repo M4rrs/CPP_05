@@ -1,6 +1,6 @@
 #pragma once
-#ifndef AForm_HPP
-#define AForm_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 #include <stdbool.h>
@@ -21,8 +21,9 @@ class AForm {
 		AForm( std::string name, int sign, int exec );
 		AForm( const AForm &copy);
 		AForm &operator=( const AForm &assign );
-		~AForm( void );
+		virtual ~AForm( void );
 
+		void setName( std::string name);
 		void setSign( int sign );
 		void setExec( int exec );
 		int setGrade( int grade );
@@ -33,6 +34,7 @@ class AForm {
 		bool getStatus( void ) const;
 
 		void beSigned( Bureaucrat *b );
+		void execute(Bureaucrat const &executor) const;
 
 		class GradeTooHighException : public std::exception {
 			public:
@@ -44,7 +46,7 @@ class AForm {
 				virtual const char* what() const throw();
 		};
 
-		class AFormSigned : public std::exception {
+		class FormSigned : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};

@@ -22,8 +22,6 @@ class Form {
 		Form &operator=( const Form &assign );
 		~Form( void );
 
-		void setSign( int sign );
-		void setExec( int exec );
 		int setGrade( int grade );
 
 		std::string getName( void ) const;

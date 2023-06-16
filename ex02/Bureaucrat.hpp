@@ -6,6 +6,7 @@
 #include "AForm.hpp"
 
 class AForm;
+
 class Bureaucrat {
 	private:
 		const std::string	_name;
@@ -27,6 +28,7 @@ class Bureaucrat {
 		void demote( int demotion );
 
 		void signForm( AForm &f );
+		void executeForm( AForm const &form);
 
 		class GradeTooHighException : public std::exception {
 			public:

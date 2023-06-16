@@ -86,7 +86,7 @@ void Bureaucrat::demote( int demotion ) {
 			<< std::endl;
 }
 
-void Bureaucrat::signForm( Form &f ) {
+void Bureaucrat::signForm( AForm &f ) {
 	if (f.getStatus()) {
 		std::cout << _name << " signed " << f.getName() << "."
 				<< std::endl;
