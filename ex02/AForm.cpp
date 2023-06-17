@@ -4,16 +4,19 @@
 
 AForm::AForm( void ) : _name("Unknown"), _signGrade(75), _execGrade(1) {
 	_signed = false;
+	_executed = false;
 	std::cout << "Default Form " + _name + " constructed." << std::endl;
 }
 
 AForm::AForm( int sign, int exec ) : _name("Unknown"), _signGrade(setGrade(sign)), _execGrade(setGrade(exec)) {
 	_signed = false;
+	_executed = false;
 	std::cout << "Grade instantiated Form " + _name + " constructed." << std::endl;
 }
 
 AForm::AForm( std::string name, int sign, int exec ) : _name(name), _signGrade(setGrade(sign)), _execGrade(setGrade(exec)){
 	_signed = false;
+	_executed = false;
 	std::cout << "Form " + _name + " constructed." << std::endl;
 }
 
@@ -35,13 +38,15 @@ AForm::AForm( const AForm &copy ) : _name(copy._name), _signGrade(copy._signGrad
 AForm &AForm::operator=( const AForm &assign ) {
 
 	this->_signed = assign._signed;
+	this->_executed = assign._executed;
 	return (*this);
 }
 
 std::ostream &operator<<( std::ostream &out, AForm *insert ) {
 	out << insert->getName() + ": Grade to sign[\033[32m" << insert->getSign()
 		<< "\033[0m] Grade to execute[\033[32m" << insert->getExec() << "\033[0m]\n"
-		<< "Current form status[\033[32m" << insert->getStatus() << "\033[0m]"
+		<< "Current form status[\033[32m" << insert->getStatus() << "\033[0m]\n"
+		<< "Execution status[\033[32m" << insert->getExecStatus() << "\033[0m]\n"
 		<< std::endl;
 	return (out);
 }
@@ -62,6 +67,10 @@ int	AForm::getExec( void ) const {
 
 bool	AForm::getStatus( void ) const {
 	return(_signed);
+}
+
+bool	AForm::getExecStatus( void ) const {
+	return(_executed);
 }
 
 int AForm::setGrade( int grade ) {

@@ -11,11 +11,13 @@ class AForm {
 	private:
 		const std::string	_name;
 		bool _signed;
+		bool _executed
 		const int _signGrade;
 		const int _execGrade;
 
 	public:
-		virtual void contract() = 0;
+		virtual void execute(Bureaucrat const &executor) const = 0;
+
 		AForm( void );
 		AForm( int sign, int exec );
 		AForm( std::string name, int sign, int exec );
@@ -32,9 +34,9 @@ class AForm {
 		int	getExec( void ) const;
 		int	getSign( void ) const;
 		bool getStatus( void ) const;
+		bool getExecStatus( void ) const;
 
 		void beSigned( Bureaucrat *b );
-		void execute(Bureaucrat const &executor) const;
 
 		class GradeTooHighException : public std::exception {
 			public:
