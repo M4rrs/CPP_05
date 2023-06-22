@@ -29,41 +29,19 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=( const ShrubberyCreation
 /*=============== PUBLIC  ===============*/
 
 void ShrubberyCreationForm::execute( Bureaucrat const &executor ) const {
-	try {
-		if (getStatus() && !getExecStatus() && executor.getGrade() <= getExec()) {
-			createShrub();
-			b.executeForm(this);
-		}
-		else if (!getStatus())
-			throw ShrubberyCreationForm::UnsignedForm();
-		else if (getExec())
-			throw ShrubberyCreationForm::FormAlreadyExecuted();
-		else if (executor.getGrade() > getExec())
-			throw ShrubberyCreationForm::ExecGradeLow():
-	}
-	catch (ShrubberyCreationForm::UnsignedForm &except) {
-		std::cout << except.what() << std::endl;
-	}
-	catch (ShrubberyCreationForm::ExecGradeLow &except) {
-		std::cout << except.what() << " Required grade to execute this form is ("
-				<< getExec() << ")\033[0m"
-				<< std::endl;
-	}
-	catch (ShrubberyCreationForm::FormAlreadyExecuted &except ) {
-		std::cout << except.what() << std::endl;
-	}
-}
 
-/*=============== 	EXCEPTION  ===============*/
-
-const char* ShrubberyCreationForm::UnsignedForm::what( void ) const throw() {
-	return ("\033[31mSCF status unsigned.\033[0m");
-}
-
-const char* ShrubberyCreationForm::ExecGradeLow::what( void ) const throw() {
-	return ("\033[31mExecution Grade too low.");
-}
-
-const char* ShrubberyCreationForm::UnsignedForm::what( void ) const throw() {
-	return ("\033[31mThis form has already been executed.\033[0m");
+			std::ofstream shrub(_target + "_shrubbery");
+			shrub << "          &&& &&  & &&" << std::endl;
+			shrub << "      && &\\/&\\|& ()|/ @, &&" << std::endl;
+			shrub << "      &\\/(/&/&||/& /_/)_&/_&" << std::endl;
+			shrub << "   &() &\\/&|()|/&\\/ '%\" & ()" << std::endl;
+			shrub << "  &_\\_&&_\\ |& |&&/&__%_/_& &&" << std::endl;
+			shrub << "&&   && & &| &| /& & % ()& /&&" << std::endl;
+			shrub << " ()&_---()&\\&\\|&&-&&--%---()~" << std::endl;
+			shrub << "     &&     \\|||" << std::endl;
+			shrub << "             |||" << std::endl;
+			shrub << "             |||" << std::endl;
+			shrub << "             |||" << std::endl;
+			shrub << "       , -=-~  .-^- _" << std::endl;
+			shrub.close();
 }

@@ -96,6 +96,34 @@ void Bureaucrat::signForm( AForm &f ) {
 				<< " because their grade is too low." << std::endl;
 	}
 }
+
+void Bureaucrat::executeForm( AForm const &f ) {
+	try {
+		if (!f.getStatus()) {
+			std::cout << "\033[31mSCF";
+			throw Bureaucrat::UnsignedForm();
+		}
+		else if (getGrade() > f.getExec()) {
+			throw Bureaucrat::GradeTooLowException();
+			std::cout << " Required grade to execute this form is ("
+					<< f.getExec() << ")\033[0m"
+					<< std::endl;
+		}
+		else {
+			f.execute(*this);
+			std::cout << _name << " executed " << f.getName() << std::endl;
+		}
+	}
+	catch (Bureaucrat::UnsignedForm &except) {
+		std::cout << except.what() << std::endl;
+	}
+	catch (Bureaucrat::ExecGradeLow &except) {
+		std::cout << except.what() << " Required grade to execute this form is ("
+				<< f.getExec() << ")\033[0m"
+				<< std::endl;
+	}
+
+}
 /*=============== 	EXCEPTION  ===============*/
 
 const char* Bureaucrat::GradeTooHighException::what( void ) const throw() {
@@ -106,3 +134,10 @@ const char* Bureaucrat::GradeTooLowException::what( void ) const throw() {
 	return ("\033[31mGrade too low. Grade set to minimum (150)\033[0m");
 }
 
+const char* Bureaucrat::UnsignedForm::what( void ) const throw() {
+	return ("Form status unsigned.\033[0m");
+}
+
+const char* Bureaucrat::ExecGradeLow::what( void ) const throw() {
+	return ("\033[31mExecution grade too low.");
+}

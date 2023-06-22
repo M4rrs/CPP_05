@@ -4,6 +4,8 @@
 
 #include "Bureaucrat.hpp"
 #include <stdbool.h>
+#include <iostream>
+#include <fstream>
 
 class Bureaucrat;
 
@@ -11,7 +13,7 @@ class AForm {
 	private:
 		const std::string	_name;
 		bool _signed;
-		bool _executed
+		bool _executed;
 		const int _signGrade;
 		const int _execGrade;
 
@@ -29,6 +31,7 @@ class AForm {
 		void setSign( int sign );
 		void setExec( int exec );
 		int setGrade( int grade );
+		void setExecStatus( int status );
 
 		std::string getName( void ) const;
 		int	getExec( void ) const;
@@ -52,6 +55,11 @@ class AForm {
 			public:
 				virtual const char* what() const throw();
 		};
+
+		// class UnsignedForm : public std::exception {
+		// 	public:
+		// 		virtual const char* what() const throw();
+		// };
 };
 
 std::ostream &operator<<( std::ostream &out, AForm *insert );

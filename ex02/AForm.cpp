@@ -73,6 +73,10 @@ bool	AForm::getExecStatus( void ) const {
 	return(_executed);
 }
 
+void AForm::setExecStatus( int status ) {
+	_executed = status;
+}
+
 int AForm::setGrade( int grade ) {
 	try {
 		if (grade < 1)
@@ -130,3 +134,7 @@ const char* AForm::GradeTooLowException::what( void ) const throw() {
 const char* AForm::FormSigned::what( void ) const throw() {
 	return ("\033[31mThis form has already been signed by another Bureaucrat.\033[0m");
 }
+
+// const char* AForm::UnsignedForm::what( void ) const throw() {
+// 	return ("Form status unsigned.\033[0m");
+// }
