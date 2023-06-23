@@ -4,8 +4,8 @@ FLAGS	= -Wall -Werror -Wextra -I -std=c++98 -fsanitize=address
 
 RM 		= rm -rf
 
-SRCS	= Bureaucrat.cpp main.cpp Form.cpp
-INC		= Bureaucrat.hpp Form.hpp
+SRCS	= Bureaucrat.cpp main.cpp AForm.cpp ShrubberCreationForm.cpp
+INC		= Bureaucrat.hpp AForm.hpp ShrubberCreationForm.hpp
 
 OBJS	= ${SRCS:%.cpp=%.o}
 
