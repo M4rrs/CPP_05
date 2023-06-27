@@ -1,11 +1,11 @@
-NAME	= AForm
+NAME	= Intern
 CC		= c++
 FLAGS	= -Wall -Werror -Wextra -I -std=c++98 -fsanitize=address
 
 RM 		= rm -rf
 
-SRCS	= Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp main.cpp 
-INC		= Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+SRCS	= Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp main.cpp 
+INC		= Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.cpp
 
 OBJS	= ${SRCS:%.cpp=%.o}
 
@@ -16,7 +16,7 @@ OBJS	= ${SRCS:%.cpp=%.o}
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-		@echo "\n\033[38;5;204mMama I'm a Bureaucrat I sign Forms.\033[0m"
+		@echo "\n\033[38;5;204mI'm a corporate slave.\033[0m"
 		@${CC} ${FLAGS} ${OBJS} -o $@
 
 clean:
